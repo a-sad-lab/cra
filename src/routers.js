@@ -7,21 +7,25 @@ import {
   Route
 } from 'react-router-dom'
 
-function OMG() {
-  return (
-    <pre>o m g</pre>
-  )
-}
-
 const Home = loadable(() => import(/* webpackChunkName: "home" */ './cmp/home'), {
   fallback: <div>HOME LOADING......</div>
 })
-const About = loadable(() => import(/* webpackChunkName: "about" */ './cmp/about').catch(function(err) {
-  console.log({err})
-  return OMG
-}), {
-  fallback: <div>ABOUT LOADING......</div>
-})
+
+const About = loadable(
+  () => import(/* webpackChunkName: "about" */ './cmp/about').catch(
+    function(err) {
+      console.log({err})
+      return function OMG() {
+        return (
+          <pre>o m g</pre>
+        )
+      }
+    }
+  ), 
+  {
+    fallback: <div>ABOUT LOADING......</div>
+  }
+)
 
 function Routers() {
   return (
@@ -29,8 +33,11 @@ function Routers() {
       <Route path="/about">
         <About />
       </Route>
-      <Route path="/">
+      <Route exact path="/">
         <Home />
+      </Route>
+      <Route path="*">
+        <pre>404 not found</pre>
       </Route>
     </Switch>
   )
