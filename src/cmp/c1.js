@@ -1,34 +1,29 @@
-import React, {useState, useEffect, useCallback} from 'react'
-import useCmp from '../hook/use-cmp'
+import {useState, useEffect} from 'react'
+// import useCmp from '../hook/use-cmp'
 
 function C1(props) {
+  console.log('c1')
   const [date, setDate] = useState(Date())
-  const des = useCmp('C1')
+  // const des = useCmp('C1')
 
   useEffect(function() {
-    document.title = 'special title'
-    console.log('use effect')
-    return function() {
+    document.title = 'c1 title'
+    return function destroy() {
       document.title = 'normal title'
     }
   }, [])
 
-  const m = useCallback(function(a) {
-    console.log(a)
-  }, [])
-
   function changeDate(evt) {
-    // console.log(evt.nativeEvent)
     setDate(Date())
-    m('a')
   }
 
   return (
     <div>
-      <h2>{des}</h2>
-      <p>{date}</p>
+      <h1>C1</h1>
+      {/* <h2>des: {des}</h2> */}
+      <p>date: {date}</p>
       <button onClick={changeDate}>change date</button>
-      <pre>{props.data}</pre>
+      <pre>props.data: {props.data}</pre>
     </div>
   )
 }

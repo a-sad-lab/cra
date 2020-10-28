@@ -1,12 +1,13 @@
-import React from 'react'
-import useCmp from '../hook/use-cmp'
+// import useCmp from '../hook/use-cmp'
 
-function C2(props) {
-  const des = useCmp('C2')
+function C2(l) {
+  console.log('c2')
+  // const des = useCmp('C2')
   return (
     <div>
-      <h2>{des}</h2>
-      <p>{props.data}</p>
+      <h1>C2</h1>
+      {/* <h2>des: {des}</h2> */}
+      <pre>l.data: {l.data}</pre>
     </div>
   )
 }

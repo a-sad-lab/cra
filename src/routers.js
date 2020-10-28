@@ -1,4 +1,3 @@
-import React from 'react'
 // import Home from './cmp/home'
 // import About from './cmp/about'
 import loadable from '@loadable/component'
@@ -6,6 +5,8 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
+import {A} from './cmp/a'
+import {B} from './cmp/b'
 
 const Home = loadable(() => import(/* webpackChunkName: "home" */ './cmp/home'), {
   fallback: <div>HOME LOADING......</div>
@@ -34,7 +35,9 @@ function Routers() {
         <About />
       </Route>
       <Route exact path="/">
-        <Home />
+        <Home a={<A />} b={<B />}>
+          <div>货啊……这是 children</div>
+        </Home>
       </Route>
       <Route path="*">
         <pre>404 not found</pre>
