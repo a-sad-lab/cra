@@ -33,6 +33,12 @@ function App() {
           <li>
             <Link to="/about">About</Link>
           </li>
+          <li>
+            <Link to="/ref">Ref</Link>
+          </li>
+          <li>
+            <Link to="/hoc-ref">Hoc Ref</Link>
+          </li>
         </ol>
         {cmp}
         <C2 data='C2 cmp' />
@@ -45,6 +51,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <hr />
       <Routers />
     </BrowserRouter>
     
